@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         buttonOpenCau4 = findViewById(R.id.buttonOpenCau4);
         buttonOpenCau5 = findViewById(R.id.buttonOpenCau5);
 
-        // Mở màn hình câu 4
         buttonOpenCau4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -5,14 +5,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Cau5Activity extends AppCompatActivity {
 
-    private EditText editTextNumbers;
-    private Button buttonCheckPerfectSquare;
+    private EditText editTextNumberOfElements;
+    private Button buttonGenerateAndCheck;
     private TextView textViewResult;
     private Button buttonBack;
 
@@ -21,8 +24,8 @@ public class Cau5Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cau5);
 
-        editTextNumbers = findViewById(R.id.editTextNumbers);
-        buttonCheckPerfectSquare = findViewById(R.id.buttonCheckPerfectSquare);
+        editTextNumberOfElements = findViewById(R.id.editTextNumberOfElements);
+        buttonGenerateAndCheck = findViewById(R.id.buttonGenerateAndCheck);
         textViewResult = findViewById(R.id.textViewResult);
         buttonBack = findViewById(R.id.buttonBack);
 
@@ -33,32 +36,53 @@ public class Cau5Activity extends AppCompatActivity {
             }
         });
 
-        buttonCheckPerfectSquare.setOnClickListener(new View.OnClickListener() {
+        buttonGenerateAndCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String input = editTextNumbers.getText().toString();
+                String input = editTextNumberOfElements.getText().toString();
+
                 if (!input.isEmpty()) {
-                    String[] numbersStr = input.split(",");
-                    ArrayList<Integer> numbers = new ArrayList<>();
-                    for (String numStr : numbersStr) {
-                        numbers.add(Integer.parseInt(numStr.trim()));
+                    int numberOfElements = Integer.parseInt(input);
+
+                    ArrayList<Integer> randomNumbers = generateRandomNumbers(numberOfElements);
+                    ArrayList<Integer> perfectSquares = getPerfectSquares(randomNumbers);
+
+                    StringBuilder result = new StringBuilder("Các số chính phương: ");
+                    for (int num : perfectSquares) {
+                        result.append(num).append(" ");
                     }
 
-                    StringBuilder perfectSquares = new StringBuilder("Các số chính phương: ");
-                    for (int num : numbers) {
-                        if (isPerfectSquare(num)) {
-                            perfectSquares.append(num).append(" ");
-                        }
-                    }
+                    textViewResult.setText(result.toString());
 
-                    textViewResult.setText(perfectSquares.toString());
+                    Toast.makeText(Cau5Activity.this, result.toString(), Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(Cau5Activity.this, "Vui lòng nhập số phần tử", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
+    private ArrayList<Integer> generateRandomNumbers(int n) {
+        ArrayList<Integer> numbers = new ArrayList<>();
+        Random random = new Random();
+        for (int i = 0; i < n; i++) {
+            numbers.add(random.nextInt(100) + 1);
+        }
+        return numbers;
+    }
+
+    private ArrayList<Integer> getPerfectSquares(ArrayList<Integer> numbers) {
+        ArrayList<Integer> perfectSquares = new ArrayList<>();
+        for (int num : numbers) {
+            if (isPerfectSquare(num)) {
+                perfectSquares.add(num);
+            }
+        }
+        return perfectSquares;
+    }
+
     private boolean isPerfectSquare(int num) {
-        int sqrt = (int) Math.sqrt(num);
-        return num == sqrt * sqrt;
+        double sqrt = Math.sqrt(num);
+        return sqrt == (int) sqrt;
     }
 }

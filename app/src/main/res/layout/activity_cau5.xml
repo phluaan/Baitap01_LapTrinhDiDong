@@ -7,21 +7,21 @@
     tools:context=".Cau5Activity">
 
     <EditText
-        android:id="@+id/editTextNumbers"
+        android:id="@+id/editTextNumberOfElements"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Nhập các số, cách nhau bằng dấu phẩy"
+        android:hint="Nhập số phần từ của mảng số ngẫu nhiên"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonCheckPerfectSquare"
+        android:id="@+id/buttonGenerateAndCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Kiểm tra số chính phương"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumbers"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumberOfElements"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -29,9 +29,9 @@
         android:id="@+id/textViewResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kết quả sẽ hiển thị ở đây"
+        android:text="Kết quả"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCheckPerfectSquare"
+        app:layout_constraintTop_toBottomOf="@+id/buttonGenerateAndCheck"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
     <Button

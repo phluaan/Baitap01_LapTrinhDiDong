@@ -57,7 +57,7 @@
         android:id="@+id/buttonOpenCau5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nhập số phần tử của mảng"
+        android:text="Nhập số phần tử của mảng, kiểm tra số chính phương"
         app:layout_constraintTop_toBottomOf="@id/buttonOpenCau4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

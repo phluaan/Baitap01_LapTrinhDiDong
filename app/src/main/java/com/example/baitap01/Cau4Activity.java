@@ -37,10 +37,8 @@ public class Cau4Activity extends AppCompatActivity {
         buttonCheckPrime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Lấy chuỗi từ EditText
                 String input = editTextNumbers.getText().toString();
 
-                // Kiểm tra nếu chuỗi không rỗng
                 if (!input.isEmpty()) {
                     String[] numbersStr = input.split(",");
                     ArrayList<Integer> numbers = new ArrayList<>();
@@ -48,7 +46,6 @@ public class Cau4Activity extends AppCompatActivity {
                         numbers.add(Integer.parseInt(numStr.trim()));
                     }
 
-                    // Kiểm tra số nguyên tố trong mảng
                     StringBuilder primeNumbers = new StringBuilder("Các số nguyên tố: ");
                     for (int num : numbers) {
                         if (isPrime(num)) {
